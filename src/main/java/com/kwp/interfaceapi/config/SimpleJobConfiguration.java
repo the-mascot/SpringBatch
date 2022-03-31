@@ -4,6 +4,7 @@ import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,15 +12,15 @@ import com.kwp.interfaceapi.tasklets.taskletStep1;
 import com.kwp.interfaceapi.tasklets.taskletStep2;
 import com.kwp.interfaceapi.tasklets.taskletStep3;
 
-import lombok.RequiredArgsConstructor;
 
 
 @Configuration
-@RequiredArgsConstructor
 public class SimpleJobConfiguration {
-
-	private final JobBuilderFactory jobBuilderFactory;
-	private final StepBuilderFactory stepBuilderFactory;
+	
+	@Autowired
+	private JobBuilderFactory jobBuilderFactory;
+	@Autowired
+	private StepBuilderFactory stepBuilderFactory;
 	
 	@Bean
 	public Job simpleJob1() {

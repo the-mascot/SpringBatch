@@ -11,11 +11,15 @@ import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
+@EnableAsync
+@EnableCaching
+@EnableScheduling
 @EnableBatchProcessing
 @SpringBootApplication
 public class KwpInterfaceApplication {
@@ -26,12 +30,12 @@ public class KwpInterfaceApplication {
 		app.setWebApplicationType(WebApplicationType.NONE);
 		ConfigurableApplicationContext ctx = app.run(args);
 		JobLauncher jobLauncher = ctx.getBean(JobLauncher.class);
-		
+		//System.out.println("args->"+args[0]);
 		if(args.length > 0) {
 			Job job = ctx.getBean(args[0], Job.class);
 			jobLauncher.run(job, new JobParameters());
 		} else {
-			log.error("No args!!!!!!!!!!!!!");
+			System.out.println("----------------------------- No Args! ---------------------------------");
 		}
 		
 		System.exit(0);

@@ -36,7 +36,6 @@ public class KwpInterfaceApplication {
 			System.out.println("----------------------------- No Args! ---------------------------------");
 		}
 		
-		System.exit(0);
 	}
 
 }

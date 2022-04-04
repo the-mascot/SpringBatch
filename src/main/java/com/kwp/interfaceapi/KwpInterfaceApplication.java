@@ -27,10 +27,8 @@ public class KwpInterfaceApplication {
 	public static void main(String[] args) throws JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException, JobParametersInvalidException {
 		
 		SpringApplication app = new SpringApplication(KwpInterfaceApplication.class);
-		app.setWebApplicationType(WebApplicationType.NONE);
 		ConfigurableApplicationContext ctx = app.run(args);
 		JobLauncher jobLauncher = ctx.getBean(JobLauncher.class);
-		//System.out.println("args->"+args[0]);
 		if(args.length > 0) {
 			Job job = ctx.getBean(args[0], Job.class);
 			jobLauncher.run(job, new JobParameters());

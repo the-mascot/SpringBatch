@@ -26,13 +26,19 @@ public class SimpleJobConfiguration {
 	public Job simpleJob1() {
 		return jobBuilderFactory.get("simpleJob1")	// simpleJob 이름으로 Job 등록
 				.start(simpleStep1())
-				.next(simpleStep2())
 				.build();
 	}
 	
 	@Bean
 	public Job simpleJob2() {
 		return jobBuilderFactory.get("simpleJob2")
+				.start(simpleStep2())
+				.build();
+	}
+	
+	@Bean
+	public Job simpleJob3() {
+		return jobBuilderFactory.get("simpleJob3")
 				.start(simpleStep3())
 				.build();
 	}

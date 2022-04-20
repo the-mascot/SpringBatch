@@ -18,6 +18,7 @@ public class taskletStep1 implements Tasklet {
 		System.out.println(sdf.format(now).toString()+" taskletStep1 실행....");
 		System.out.println("Thread.sleep 2초 시작...");
 		Thread.sleep(2000);
+		System.out.println(5/ 0);
 		return RepeatStatus.FINISHED;
 	}
 }
